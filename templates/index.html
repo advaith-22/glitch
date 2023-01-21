@@ -34,6 +34,21 @@
       <div class="col-lg-8  offset-lg-2">
         <img src="{{ url_for('video') }}" width="100%">
     </div>
-    </div>
+  </div>
+  <video id="myVidPlayer" controls muted autoplay></video>
+  <script type="text/javascript">
+    const video = document.querySelector('#myVidPlayer');
+    window.navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+            video.onloadedmetadata = (e) => {
+                video.play();
+            };
+        })
+        .catch( () => {
+            alert('You have to give browser the permission to run Webcam and mic');
+        });
+
+</script>
   </body>
 </html>

@@ -2,6 +2,8 @@ import torch
 import numpy as np
 import cv2
 import time
+from threading import Thread
+from queue import Queue
 
 
 class ObjectDetection:
@@ -27,7 +29,7 @@ class ObjectDetection:
      
         labels, cord = results.xyxyn[0][:, -1], results.xyxyn[0][:, :-1]
         if len(cord.tolist()) != 0:
-            print(cord.tolist())
+            self.potholedetected = True
         return labels, cord
 
 
@@ -57,12 +59,4 @@ class ObjectDetection:
         frame = self.plot_boxes(results, frame)
         end_time = time.perf_counter()
         fps = 1 / np.round(end_time - start_time, 3)
-        return frame
-    
-detect = ObjectDetection()
-
-while 1:
-    cap = cv2.VideoCapture("test.mp4")
-    im = detect.run(cap)
-    cv2.imshow(" ", im)
-    cv2.waitKey(1)
+        return [frame, ret, self.potholedetected]
