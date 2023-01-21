@@ -15,10 +15,9 @@
   .container{
     text-align: center;
     position: relative;
-    top: 300px;
-    left: 550px;
-    border: #2c3e50;
-    width: 500px;
+    top: 200px;
+    left: 450px;
+    width: 700px;
   }
   .btn{
     border: 1px solid #fff;

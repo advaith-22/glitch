@@ -14,19 +14,12 @@
   @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
   </style>
   </head>
-  <body>
+  <body onload="beep">
     <div>
     <div class="content"></div>
      <nav>
-      <div class=logo_1>
+      <div class=logo_1 style="text-align: center;">
       <label class="logo">Glitch</label>
-      <ul> 
-        <li><a class="index.html" href="#">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
-      </ul>
      </nav>
     </div>
     <centre>
@@ -35,20 +28,5 @@
         <img src="{{ url_for('video') }}" width="100%">
     </div>
   </div>
-  <video id="myVidPlayer" controls muted autoplay></video>
-  <script type="text/javascript">
-    const video = document.querySelector('#myVidPlayer');
-    window.navigator.mediaDevices.getUserMedia({ video: true })
-        .then(stream => {
-            video.srcObject = stream;
-            video.onloadedmetadata = (e) => {
-                video.play();
-            };
-        })
-        .catch( () => {
-            alert('You have to give browser the permission to run Webcam and mic');
-        });
-
-</script>
   </body>
 </html>

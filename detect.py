@@ -28,6 +28,7 @@ class ObjectDetection:
         results = self.model(frame)
      
         labels, cord = results.xyxyn[0][:, -1], results.xyxyn[0][:, :-1]
+        self.potholedetected = False
         if len(cord.tolist()) != 0:
             self.potholedetected = True
         return labels, cord

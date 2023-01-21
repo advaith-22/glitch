@@ -2,11 +2,13 @@ from flask import Flask, render_template, request, flash, url_for, redirect, Res
 import json
 import datetime
 import time
+import beepy
 import detect
 import cv2
+import threading
 
 app = Flask(__name__)
-camera = cv2.VideoCapture(1)
+camera = cv2.VideoCapture(0)
 
 
 @app.route('/')
@@ -15,22 +17,27 @@ def index():
 
 def gen_frames():  
     detector = detect.ObjectDetection()
-    cap = cv2.VideoCapture("test.mp4")
+    cap = cv2.VideoCapture(0)
 
     while 1:
         im = detector.run(cap)
+        if im[2]:
+            def beep():
+                beepy.beep(sound=1)
+            thread = threading.Thread(target = beep())
+            thread.start()
+            thread.join()
+        else:
+            potholer = "False"
         if not im[1]:
             break
         else:
             im[1], buffer = cv2.imencode('.jpg', im[0])
             frame = buffer.tobytes()
-            yield (b'--frame\r\n'
-                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+            yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
 @app.route('/video', methods = ['GET', 'POST'])
 def video():
-    print("working")
-    my_id = request.form.get("#myVidPlayer")
-    print(my_id)
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
