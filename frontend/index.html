@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>No Potholes</title>
+      </head>
+      <body>
+        <div class="content"></div>
+      <nav>
+       <label class="logo">Glitch</label>
+          <ul> 
+            <li><a class="index.html" href="#">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+          </ul>
+         </nav>
+        <div class="button">
+        <a href="" target="">Creat new session</a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8  offset-lg-2">
+                <h3 class="mt-5">Live Streaming</h3>
+                <img src="{{ url_for('video_feed') }}" width="100%">
+            </div>
+                </div>
+           </div>
+      </body>
+    </html>
