@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <link href='https://fonts.googleapis.com/css?family=Rubik Glitch' >
-    <meta charset="utf-8">
-    <title>No Potholes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Rubik Glitch' >
+    <title>No Potholes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   <style>
@@ -15,9 +15,10 @@
   </style>
   </head>
   <body>
+    <div>
     <div class="content"></div>
-    <nav>
-    
+     <nav>
+      <div class=logo_1>
       <label class="logo">Glitch</label>
       <ul> 
         <li><a class="index.html" href="#">Home</a></li>
@@ -26,16 +27,13 @@
         <li><a href="contact.html">Contact</a></li>
         <li><a href="feedback.html">Feedback</a></li>
       </ul>
-    </nav>
-    <section></section>
-    <a href="{{ url_for( 'video' ) }}" style="background-color: black; color: white; text-decoration: none; padding: 3px; border-radius: 20px;">Create new session</a>
-        <div class="container">
-        <div class="row">
-            <div class="col-lg-8  offset-lg-2">
-                <h3 class="mt-5">Video</h3>
-                <img src="{{ url_for('video') }}" width="100%">
-            </div>
+     </nav>
+    </div>
+    <centre>
+    <div class="container">
+      <div class="col-lg-8  offset-lg-2">
+        <img src="{{ url_for('video') }}" width="100%">
+    </div>
+    </div>
   </body>
 </html>
-     
-    

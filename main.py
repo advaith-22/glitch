@@ -24,9 +24,8 @@ def gen_frames():
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 @app.route('/video', methods = ['GET', 'POST'])
 def video():
-    if request.method == 'POST':
-        print("working")
-        return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+    print("working")
+    return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(port=2248 ,debug=True)
+    app.run(port=2248 ,debug=True, host = "0.0.0.0")
