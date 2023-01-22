@@ -24,7 +24,7 @@ def vidc():
 
 def gen_frames():  
     detector = detect.ObjectDetection()
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture("test1.mp4")
 
     while 1:
         im = detector.run(cap)
