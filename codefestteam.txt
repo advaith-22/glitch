@@ -5,3 +5,5 @@ Team Members:
 2 - Suchet
 3 - Ishan
 4 - Hamdan Syed
+
+A pothole detection system to help drivers with lack of attention on road for road safety.
