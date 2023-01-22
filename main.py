@@ -8,12 +8,19 @@ import cv2
 import threading
 
 app = Flask(__name__)
-camera = cv2.VideoCapture(0)
 
-
-@app.route('/')
+@app.route("/")
 def index():
     return render_template('index.html')
+
+@app.route('/vid/<id>')
+def vid(id):
+    return render_template('vid.html')
+
+@app.route('/vid', methods=['GET', 'POST', 'PUT'])
+def vidc():
+    id = request.form.get("id")
+    return redirect(f"http://localhost:2248/vid/{id}")
 
 def gen_frames():  
     detector = detect.ObjectDetection()
@@ -21,6 +28,7 @@ def gen_frames():
 
     while 1:
         im = detector.run(cap)
+        
         if im[2]:
             def beep():
                 beepy.beep(sound=1)
@@ -41,4 +49,4 @@ def video():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(port=2248 ,debug=True, host = "0.0.0.0")
+    app.run(port=2248 ,debug=True)
