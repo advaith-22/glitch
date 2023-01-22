@@ -17,7 +17,7 @@ def index():
 
 def gen_frames():  
     detector = detect.ObjectDetection()
-    cap = cv2.VideoCapture("test1.mp4")
+    cap = cv2.VideoCapture(0)
 
     while 1:
         im = detector.run(cap)
